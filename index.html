@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GEMA — Siti che ti fanno trovare</title>
+<meta name="description" content="GEMA progetta siti su misura, design, SEO e assistenza dopo il lancio. Non sarai tu a cercare i clienti: saranno loro a trovare te.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&family=Inter:wght@400&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/gema.css">
+<!-- Se arrivi con una transizione (es. dai contatti), la pagina si apre con il pannello blu: la classe va messa prima del primo disegno -->
+<script>try{if(sessionStorage.getItem("gema-pt"))document.documentElement.classList.add("pt-arrive")}catch(e){}</script>
+</head>
+<body>
+
+<!-- Pannello della transizione d'ingresso (visibile solo arrivando con una transizione) -->
+<div class="pt-cover pt-in" aria-hidden="true"><p class="pt-word display"></p></div>
+
+<!-- Navbar fissa: compare con lo scorrimento -->
+<header class="topbar" aria-label="Navigazione">
+  <div class="topbar-in">
+    <a href="#top" class="logo">GEMA</a>
+    <nav class="topbar-links">
+      <a href="#cosa-facciamo">Cosa facciamo</a>
+      <a href="#come-lavoriamo">Come lavoriamo</a>
+      <a class="btn" href="contatti.html" data-to-contact>Contattaci</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<div class="hero" id="top">
+  <!-- Sfondo "Matrix Rain" (porting in JS puro del componente React MatrixRain) + velo -->
+  <div class="matrix" data-matrix aria-hidden="true"></div>
+  <div class="veil" aria-hidden="true"></div>
+  <div class="fade" aria-hidden="true"></div>
+  <div class="grain"></div>
+
+  <nav class="nav" aria-label="Principale">
+    <a href="#top" class="logo">GEMA</a>
+    <a href="contatti.html" class="link" data-to-contact>Contatti</a>
+  </nav>
+
+  <div class="wrap">
+    <div class="hero-content">
+      <div class="hero-title">
+        <p class="cmd">$ gema --analizza tuo-sito.it</p>
+        <h1 class="display">Non sarai tu a cercare i clienti.<br>Saranno loro a trovare te.</h1>
+      </div>
+      <p class="sub">Analizziamo gratis il tuo sito attuale<br class="br-lg"> e ti diciamo cosa lo tiene lontano dai clienti.</p>
+      <!-- Slider: trascina il pallino fino in fondo (o cliccalo) per andare ai contatti con "Analisi gratuita" già scelta -->
+      <div class="slide" data-href="contatti.html#analisi">
+        <span class="slide-fill" aria-hidden="true"></span>
+        <span class="slide-label">Scorri per l’analisi gratuita</span>
+        <button class="slide-knob" type="button" aria-label="Richiedi l’analisi gratuita del tuo sito">→</button>
+      </div>
+    </div>
+
+    <a class="scroll-hint" href="#cosa-facciamo">scorri per entrare ↓</a>
+  </div>
+</div>
+
+<main>
+<!-- ============ COSA FACCIAMO ============ -->
+<section class="services" id="cosa-facciamo" aria-labelledby="svc-h">
+  <div class="stage">
+    <div class="grain"></div>
+    <div class="wrap">
+      <div class="svc-title" aria-live="polite">
+        <span class="cmd">$ gema --web</span>
+        <h2 class="display" id="svc-h"><span class="dim">Dentro GEMA facciamo</span><br><span class="line2">Siti su misura</span></h2>
+      </div>
+
+      <div class="progress"><span class="count">01 / 04</span><span class="bars"><i class="on"></i><i></i><i></i><i></i></span></div>
+
+      <article class="svc-card" data-cmd="$ gema --web" data-title="Siti su misura">
+        <div class="svc-head"><span class="cmd">$ gema --web</span><h3>Siti su misura</h3></div>
+        <div class="card">
+          <div class="visual"><img src="assets/illustrazioni/web.svg" width="560" height="210" alt=""><p class="tag">Sito vetrina · Portfolio</p></div>
+          <p class="desc">Siti vetrina e portfolio cuciti sul tuo brand. Raccontano chi sei e trasformano chi passa in un cliente.</p>
+          <div class="incl"><p>Cosa comprende</p>
+            <div class="chips"><span class="chip"><i class="dot"></i>Sito vetrina</span><span class="chip on"><i class="dot on"></i>Portfolio</span><span class="chip"><i class="dot"></i>Sviluppo</span></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="svc-card" data-cmd="$ gema --design" data-title="Design sul tuo brand">
+        <div class="svc-head"><span class="cmd">$ gema --design</span><h3>Design sul tuo brand</h3></div>
+        <div class="card">
+          <div class="visual"><img src="assets/illustrazioni/design.svg" width="560" height="210" alt=""><p class="tag">Design system</p></div>
+          <p class="desc">Partiamo dalla tua identità e costruiamo un design system web coerente, pensato per funzionare su ogni device.</p>
+          <div class="incl"><p>Cosa comprende</p>
+            <div class="chips"><span class="chip"><i class="dot"></i>UX/UI</span><span class="chip on"><i class="dot on"></i>Design system</span><span class="chip"><i class="dot"></i>Multi-device</span></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="svc-card" data-cmd="$ gema --seo" data-title="Visibilità">
+        <div class="svc-head"><span class="cmd">$ gema --seo</span><h3>Visibilità</h3></div>
+        <div class="card">
+          <div class="visual"><img src="assets/illustrazioni/seo.svg" width="560" height="210" alt=""><p class="tag">Search · Analytics</p></div>
+          <p class="desc">Ottimizzazione per i motori di ricerca, analytics e accessibilità: per farti trovare, capire cosa funziona e non lasciare fuori nessuno.</p>
+          <div class="incl"><p>Cosa comprende</p>
+            <div class="chips"><span class="chip"><i class="dot"></i>SEO</span><span class="chip on"><i class="dot on"></i>Analytics</span><span class="chip"><i class="dot"></i>Accessibilità</span></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="svc-card" data-cmd="$ gema --care" data-title="Dopo il lancio">
+        <div class="svc-head"><span class="cmd">$ gema --care</span><h3>Dopo il lancio</h3></div>
+        <div class="card">
+          <div class="visual"><img src="assets/illustrazioni/care.svg" width="560" height="210" alt=""><p class="tag">Uptime · Manutenzione</p></div>
+          <p class="desc">Il sito è online, ma noi non spariamo. Hosting, manutenzione e consulenza per farlo crescere nel tempo.</p>
+          <div class="incl"><p>Cosa comprende</p>
+            <div class="chips"><span class="chip"><i class="dot"></i>Hosting</span><span class="chip on"><i class="dot on"></i>Manutenzione</span><span class="chip"><i class="dot"></i>Consulenza</span></div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COME LAVORIAMO ============ -->
+<section class="method" id="come-lavoriamo" aria-labelledby="met-h">
+  <div class="grain"></div>
+  <div class="wrap">
+    <p class="cmd">$ gema --metodo</p>
+    <h2 class="display" id="met-h">Dentro GEMA lavoriamo<br><span class="w">in quattro passi</span></h2>
+
+    <div class="thread-outer">
+      <div class="thread">
+        <svg class="path" viewBox="0 0 778 1740" aria-hidden="true">
+          <path class="rail" d="M777 0C777 110 531 170 271 170C131 170 1 220 1 339C1 470 111 600 251 600C371 600 411 520 351 460C291 400 201 460 251 520C301 575 411 550 507 550C631 550 777 600 777 719C777 850 667 980 527 980C407 980 367 900 427 840C487 780 577 840 527 900C477 955 367 930 271 930C131 930 1 980 1 1099C1 1230 111 1360 251 1360C371 1360 411 1280 351 1220C291 1160 201 1220 251 1280C301 1335 411 1310 507 1310C631 1310 777 1360 777 1479C777 1640 389 1600 389 1740"/>
+          <path class="wire" d="M777 0C777 110 531 170 271 170C131 170 1 220 1 339C1 470 111 600 251 600C371 600 411 520 351 460C291 400 201 460 251 520C301 575 411 550 507 550C631 550 777 600 777 719C777 850 667 980 527 980C407 980 367 900 427 840C487 780 577 840 527 900C477 955 367 930 271 930C131 930 1 980 1 1099C1 1230 111 1360 251 1360C371 1360 411 1280 351 1220C291 1160 201 1220 251 1280C301 1335 411 1310 507 1310C631 1310 777 1360 777 1479C777 1640 389 1600 389 1740"/>
+        </svg>
+
+        <article class="step" style="left:0;top:0">
+          <p class="row"><span class="c">$ gema --ascolto</span><span class="n">01 / 04</span></p>
+          <h3 class="display">Ascolto</h3>
+          <p class="txt">Capiamo le tue esigenze, il tuo brand, come vuoi posizionarti e cosa vuoi raccontare. Poi ti mandiamo un preventivo chiaro.</p>
+          <p class="state"><i class="dot"></i><span>In coda</span></p>
+        </article>
+        <article class="step" style="left:776px;top:380px">
+          <p class="row"><span class="c">$ gema --struttura</span><span class="n">02 / 04</span></p>
+          <h3 class="display">Struttura</h3>
+          <p class="txt">Una volta chiaro cosa ti serve, disegniamo wireframe e design system: lo scheletro del tuo sito.</p>
+          <p class="state"><i class="dot"></i><span>In coda</span></p>
+        </article>
+        <article class="step" style="left:0;top:760px">
+          <p class="row"><span class="c">$ gema --design</span><span class="n">03 / 04</span></p>
+          <h3 class="display">Design</h3>
+          <p class="txt">Delineato il layout, gli diamo una veste grafica accattivante, cucita sul tuo brand e pronta per ogni device.</p>
+          <p class="state"><i class="dot"></i><span>In coda</span></p>
+        </article>
+        <article class="step" style="left:776px;top:1140px">
+          <p class="row"><span class="c">$ gema --online</span><span class="n">04 / 04</span></p>
+          <h3 class="display">Online</h3>
+          <p class="txt">Costruiamo il sito, facciamo un'ultima revisione e lo pubblichiamo. Finalmente la tua realtà è online.</p>
+          <p class="state"><i class="dot"></i><span>In coda</span></p>
+        </article>
+
+        <span class="node" style="left:540px;top:170px"><span class="halo"></span></span>
+        <span class="node" style="left:776px;top:550px"><span class="halo"></span></span>
+        <span class="node" style="left:540px;top:930px"><span class="halo"></span></span>
+        <span class="node" style="left:776px;top:1310px"><span class="halo"></span></span>
+        <span class="node end" style="left:658px;top:1740px"></span>
+      </div>
+    </div>
+
+    <div class="cta">
+      <span class="rail-v" aria-hidden="true"></span>
+      <p class="cmd">~/gema $ avvia --progetto</p>
+      <h2 class="display"><span class="dim">Il quinto passo</span><br>è il tuo.</h2>
+      <p class="sub">Raccontaci la tua idea: ti mandiamo un preventivo chiaro, senza impegno.</p>
+      <a class="btn" href="contatti.html" data-to-contact>Contattaci</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="grain"></div>
+  <div class="wrap">
+    <div class="fgrid">
+      <div class="fbrand">
+        <a href="index.html#top" class="logo">GEMA</a>
+        <p>Siti su misura, design, SEO e assistenza dopo il lancio. Costruiamo siti che portano i clienti da te.</p>
+        <a class="btn btn-sm" href="contatti.html" data-to-contact>Inizia un progetto →</a>
+      </div>
+      <nav class="fcol" aria-label="Servizi">
+        <p class="mini">SERVIZI</p>
+        <a href="index.html#cosa-facciamo">Siti su misura</a>
+        <a href="index.html#cosa-facciamo">Design sul tuo brand</a>
+        <a href="index.html#cosa-facciamo">SEO e visibilità</a>
+        <a href="index.html#cosa-facciamo">Dopo il lancio</a>
+      </nav>
+      <nav class="fcol" aria-label="Studio">
+        <p class="mini">STUDIO</p>
+        <a href="index.html#come-lavoriamo">Come lavoriamo</a>
+        <a href="index.html#top">Analisi gratuita</a>
+        <a href="contatti.html" data-to-contact>Contattaci</a>
+      </nav>
+      <div class="fcol fcontact">
+        <p class="mini">CONTATTI</p>
+        <a href="mailto:gema.studio.milano@gmail.com">gema.studio.milano@gmail.com</a>
+        <a href="tel:+393897665209">+39 389 766 5209</a>
+        <span>Rispondiamo entro 24 ore</span>
+      </div>
+    </div>
+  </div>
+  <p class="fmark" aria-hidden="true">GEMA</p>
+  <div class="bottom">
+    <div class="brand"><span>© 2026 GEMA</span></div>
+    <div class="legal"><a href="#">Privacy policy</a><a href="#">Cookie policy</a><a class="top" href="#top">Torna su ↑</a></div>
+  </div>
+</footer>
+
+<script src="assets/js/site.js"></script>
+<script src="assets/js/home.js"></script>
+</body>
+</html>
