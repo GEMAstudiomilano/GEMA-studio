@@ -179,9 +179,14 @@
   }
 
   /* =====================================================================
-     Modulo contatti. Nota: nessun backend collegato: qui si aggancia
-     l'invio vero (es. Formspree o un endpoint del team).
+     Modulo contatti: le richieste arrivano via email tramite Web3Forms
+     (https://web3forms.com, gratuito fino a 250 invii al mese).
+     La chiave d'accesso si crea su web3forms.com inserendo l'email che
+     deve ricevere le richieste; è pensata per stare nel codice pubblico.
      ===================================================================== */
+  var WEB3FORMS_KEY = '0e01e6ce-d97d-410a-8263-443c1a75c59d';
+  var EMAIL_GEMA = 'gema.studio.milano@gmail.com';
+
   var proj = document.querySelector('[data-form="progetto"]');
   if (proj) {
     var chips = [].slice.call(proj.querySelectorAll('.choice .chip'));
@@ -196,16 +201,68 @@
     if (arriving === 'analisi' || location.hash === '#analisi') {
       chips.forEach(function (c) { setChip(c, c.hasAttribute('data-analisi')); });
     }
+
+    var foot = proj.querySelector('.foot');
+    var sendBtn = proj.querySelector('button[type="submit"]');
+    var sendLabel = sendBtn.textContent;
+    var footText = foot.textContent;
+    var sending = false;
+
+    var fail = function (msg) {
+      sending = false;
+      sendBtn.disabled = false;
+      sendBtn.textContent = sendLabel;
+      foot.classList.remove('ok');
+      foot.textContent = msg;
+    };
+
     proj.addEventListener('submit', function (e) {
       e.preventDefault();
-      var foot = proj.querySelector('.foot');
+      if (sending) return;
       var bad = [].slice.call(proj.querySelectorAll('input[required]')).filter(function (i) { return !i.value || !i.checkValidity(); });
-      if (bad.length) { foot.classList.remove('ok'); foot.textContent = 'Mancano nome o email (valida).'; bad[0].focus(); return; }
-      foot.classList.add('ok');
-      foot.textContent = 'Richiesta inviata ✓ Ti rispondiamo entro 24h.';
-      // Dopo l'invio: pannello con la chiusura, poi si torna alla home
-      var btn = proj.querySelector('button[type="submit"]').getBoundingClientRect();
-      goTo('index.html', btn.left + btn.width / 2, btn.top + btn.height / 2, 'exit', 1900);
+      if (bad.length) { fail('Mancano nome o email (valida).'); bad[0].focus(); return; }
+      if (proj.querySelector('[name="botcheck"]').checked) return; // compilato da un bot: ignora
+
+      var val = function (n) { return (proj.querySelector('[name="' + n + '"]').value || '').trim(); };
+      var servizi = chips.filter(function (c) { return c.classList.contains('on'); })
+        .map(function (c) { return c.textContent.trim(); }).join(', ');
+      var nome = val('nome');
+      var data = {
+        access_key: WEB3FORMS_KEY,
+        subject: 'Nuova richiesta dal sito GEMA — ' + nome + (servizi ? ' (' + servizi + ')' : ''),
+        from_name: 'Sito GEMA',
+        name: nome,
+        email: val('email'),               // Web3Forms la usa come "rispondi a"
+        'Sito attuale': val('sito') || '—',
+        'Cosa serve': servizi || '—',
+        Messaggio: val('idea') || '—',
+        botcheck: false
+      };
+
+      sending = true;
+      sendBtn.disabled = true;
+      sendBtn.textContent = 'Invio in corso…';
+      foot.classList.remove('ok');
+      foot.textContent = footText;
+
+      fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify(data)
+      })
+        .then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { return { ok: r.ok, j: j }; }); })
+        .then(function (res) {
+          if (!res.ok || !res.j.success) throw new Error(res.j.message || 'invio non riuscito');
+          foot.classList.add('ok');
+          foot.textContent = 'Richiesta inviata ✓ Ti rispondiamo entro 24h.';
+          sendBtn.textContent = 'Inviata ✓';
+          // Dopo l'invio: pannello con la chiusura, poi si torna alla home
+          var b = sendBtn.getBoundingClientRect();
+          goTo('index.html', b.left + b.width / 2, b.top + b.height / 2, 'exit', 1900);
+        })
+        .catch(function () {
+          fail('Invio non riuscito. Riprova tra poco o scrivici a ' + EMAIL_GEMA + '.');
+        });
     });
   }
 })();

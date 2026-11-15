@@ -5,6 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Contattaci — GEMA</title>
 <meta name="description" content="Raccontaci il tuo progetto: ti rispondiamo entro 24 ore con idee concrete e un preventivo chiaro.">
+<link rel="icon" href="favicon.ico" sizes="48x48">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#141414">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&family=Inter:wght@400&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
@@ -72,6 +76,8 @@
         </div>
       </fieldset>
       <label class="field"><span>RACCONTACI LA TUA IDEA</span><textarea name="idea" placeholder="Di cosa ti occupi, cosa vorresti dal sito, eventuali scadenze…"></textarea></label>
+      <!-- trappola anti-spam: invisibile alle persone, i bot la spuntano -->
+      <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none">
       <button class="btn" type="submit">Invia la richiesta →</button>
       <p class="foot" aria-live="polite">Rispondiamo entro 24h · I tuoi dati restano tra noi.</p>
     </form>

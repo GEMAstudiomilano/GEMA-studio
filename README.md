@@ -56,13 +56,15 @@ Con "riduci movimento" attivo nel sistema la pioggia resta ferma.
 
 ## Da collegare
 
-- Il modulo "Parlaci di te" **non invia ancora nulla**: mostra la conferma e torna alla home. Va agganciato un servizio (es. Formspree) o un endpoint del team in `assets/js/site.js`.
+- Il modulo "Parlaci di te" invia le richieste via **Web3Forms** alla mail di GEMA. La chiave è in `assets/js/site.js` (`WEB3FORMS_KEY`), legata a `gema.studio.milano@gmail.com`. Gratis fino a 250 invii al mese.
 - Contatti: `gema.studio.milano@gmail.com`, `+39 389 766 5209`.
 - Social e P.IVA tolti per ora (si rimettono quando ci sono).
 - Recensione finta della hero tolta: si aggiungeranno quelle vere.
 - Privacy e cookie policy puntano a `#`.
 
 ## File
+
+- `favicon.svg`, `favicon.ico`, `favicon-32.png`, `apple-touch-icon.png`, `icon-512.png` — icona del sito: la "G" del logo GEMA, bianca su #536BE1
 
 - `index.html`, `contatti.html` — le due pagine
 - `assets/css/gema.css` — tutti gli stili
