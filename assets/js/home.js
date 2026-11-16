@@ -167,7 +167,7 @@
     clearTimeout(swapTimer);
     title.classList.add('swap');
     swapTimer = setTimeout(function () {
-      tCmd.textContent = cards[i].dataset.cmd;
+      if (window.gemaType) window.gemaType(tCmd, cards[i].dataset.cmd); else tCmd.textContent = cards[i].dataset.cmd;
       tLine.textContent = cards[i].dataset.title;
       title.classList.remove('swap');
     }, reduce ? 0 : 180);

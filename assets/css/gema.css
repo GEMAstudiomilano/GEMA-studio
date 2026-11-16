@@ -34,6 +34,10 @@ h1,h2,h3{margin:0;font-weight:700}
 /* ---------- elementi comuni ---------- */
 .wrap{position:relative;max-width:1512px;margin:0 auto;padding:0 var(--pad)}
 .cmd{font:400 16px/normal var(--mono);color:var(--accent)}
+.cmd.typed{min-height:1.32em}
+/* cursore a blocco che lampeggia, come in un terminale */
+.cmd .cur{display:inline-block;width:.55em;height:1.05em;margin-left:2px;vertical-align:-.15em;background:currentColor;animation:cmdBlink 1s steps(1) infinite}
+@keyframes cmdBlink{50%{opacity:0}}
 .display{font-family:var(--display);font-weight:700;line-height:1}
 .display .dim{color:var(--ink-42)}
 .display .acc{color:var(--accent)}
@@ -375,4 +379,5 @@ html.pt-go .reveal{opacity:1;transform:none;transition:opacity .8s ease calc(.45
   .topbar{transition:none}
   .slide-label{animation:none;color:rgba(242,244,247,.8);background:none}
   .svc-title .cmd,.svc-title .line2{transition:none}
+  .cmd .cur{animation:none}
 }

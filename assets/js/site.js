@@ -34,6 +34,49 @@
   }
 
   /* =====================================================================
+     Righe "$ gema --…": si scrivono lettera per lettera quando entrano
+     nello schermo, con il cursore a blocco che lampeggia alla fine.
+     window.gemaType(el, testo) riscrive una riga (usato da "Cosa facciamo").
+     ===================================================================== */
+  var SPEED = 38; // ms per carattere
+  function cursorEl() { var c = document.createElement('span'); c.className = 'cur'; c.setAttribute('aria-hidden', 'true'); return c; }
+  function typeInto(el, text) {
+    clearTimeout(el._typeTimer);
+    el.setAttribute('aria-label', text);
+    if (reduce) { el.textContent = text; return; }
+    var i = 0, cur = cursorEl();
+    var tick = function () {
+      el.textContent = text.slice(0, i);
+      el.appendChild(cur);
+      if (i++ < text.length) el._typeTimer = setTimeout(tick, SPEED);
+    };
+    tick();
+  }
+  window.gemaType = typeInto;
+  var cmds = [].slice.call(document.querySelectorAll('.cmd')).filter(function (el) { return !el.closest('.pt-cover'); });
+  cmds.forEach(function (el) {
+    el._full = el.textContent.trim();
+    el.classList.add('typed');
+    if (!reduce) el.textContent = '';
+  });
+  // arrivando con la transizione, si aspetta che il pannello blu si sia alzato
+  var typeDelay = root.classList.contains('pt-arrive') ? 1300 : 0;
+  setTimeout(function () {
+  if (!reduce && 'IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        io.unobserve(en.target);
+        typeInto(en.target, en.target._full);
+      });
+    }, { threshold: 0.6 });
+    cmds.forEach(function (el) { io.observe(el); });
+  } else {
+    cmds.forEach(function (el) { typeInto(el, el._full); });
+  }
+  }, typeDelay);
+
+  /* =====================================================================
      Transizioni tra le pagine: un cerchio blu si apre dal punto del clic,
      mostra una scritta, poi si carica la pagina nuova; lì lo stesso pannello
      (con la stessa scritta) sale e scopre la pagina, che parte sempre dall'alto.
