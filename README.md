@@ -62,6 +62,10 @@ Con "riduci movimento" attivo nel sistema la pioggia resta ferma.
 - Recensione finta della hero tolta: si aggiungeranno quelle vere.
 - Privacy e cookie policy puntano a `#`.
 
+## Statistiche
+
+Vercel Web Analytics è attivo su entrambe le pagine con lo script per siti HTML (in fondo al `<head>`), senza il pacchetto `@vercel/analytics`. I dati compaiono nella scheda **Analytics** del progetto su Vercel, dopo averla attivata lì. Funziona solo sul sito pubblicato su Vercel, non in locale.
+
 ## File
 
 - `favicon.svg`, `favicon.ico`, `favicon-32.png`, `apple-touch-icon.png`, `icon-512.png` — icona del sito: la "G" del logo GEMA, bianca su #536BE1

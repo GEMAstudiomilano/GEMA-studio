@@ -16,6 +16,9 @@
 <!-- La pagina contatti si apre sempre dall'inizio: niente ripristino della posizione di scroll -->
 <script>try{if("scrollRestoration" in history)history.scrollRestoration="manual"}catch(e){}</script>
 <script>try{if(sessionStorage.getItem("gema-pt"))document.documentElement.classList.add("pt-arrive")}catch(e){}</script>
+<!-- Vercel Web Analytics (sito statico: niente pacchetto npm, solo questo script) -->
+<script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
+<script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body id="top" data-scroll-top>
 
